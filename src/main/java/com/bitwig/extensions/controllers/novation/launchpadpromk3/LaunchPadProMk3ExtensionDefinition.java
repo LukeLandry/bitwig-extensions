@@ -15,12 +15,12 @@ public class LaunchPadProMk3ExtensionDefinition extends ControllerExtensionDefin
 
    @Override
    public String getName() {
-      return "Launchpad Pro Mk3";
+      return "SW Launchpad Pro Mk3";
    }
 
    @Override
    public String getAuthor() {
-      return "Bitwig";
+      return "BitwigAndSongWizard";
    }
 
    @Override
