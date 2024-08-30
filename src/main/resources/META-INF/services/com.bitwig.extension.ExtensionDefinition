@@ -23,6 +23,7 @@ com.bitwig.extensions.controllers.arturia.beatsteppro.BeatStepProExtensionDefini
 com.bitwig.extensions.controllers.arturia.keystep.KeyStepProExtensionDefinition
 com.bitwig.extensions.controllers.arturia.keystep.KeyStepExtensionDefinition
 com.bitwig.extensions.controllers.arturia.keystep.KeyStep37ExtensionDefinition
+com.bitwig.extensions.controllers.arturia.keylab.mk3.KeylabMk3ControllerExtensionDefinition
 
 com.bitwig.extensions.controllers.bajaao.EDrumControllerExtensionDefinition
 
@@ -43,6 +44,8 @@ com.bitwig.extensions.controllers.devine.VersaKey88Definition
 com.bitwig.extensions.controllers.icon.VCastDefinition
 com.bitwig.extensions.controllers.icon.VCastProDefinition
 com.bitwig.extensions.controllers.icon.VCastRxDefinition
+
+com.bitwig.extensions.controllers.intuitive_instruments.exquis.ExquisControllerExtensionDefinition
 
 com.bitwig.extensions.controllers.keith_mcmillen.QuNexusDefinition
 
