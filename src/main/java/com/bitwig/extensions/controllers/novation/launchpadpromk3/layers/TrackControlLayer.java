@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+import com.bitwig.extension.controller.api.ControllerHost;
 import com.bitwig.extension.controller.api.SettableBeatTimeValue;
 import com.bitwig.extension.controller.api.SettableEnumValue;
 import com.bitwig.extension.controller.api.SettableIntegerValue;
@@ -39,6 +40,7 @@ public class TrackControlLayer extends Layer {
 
     private SettableBeatTimeValue postRecordingTimeOffset;
     private SettableIntegerValue mTimeSignatureNumeratorValue;
+    private SettableIntegerValue mTimeSignatureDenominatorValue;
 
     private final Layer verticalLayer;
     private final Layer horizontalLayer;
@@ -112,9 +114,11 @@ public class TrackControlLayer extends Layer {
         postRecordingTimeOffset = transport.getClipLauncherPostRecordingTimeOffset();
         final SettableEnumValue postRecordingAction = transport.clipLauncherPostRecordingAction();
         mTimeSignatureNumeratorValue = transport.timeSignature().numerator();
+        mTimeSignatureDenominatorValue = transport.timeSignature().denominator();
         postRecordingAction.markInterested();
         postRecordingTimeOffset.markInterested();
         mTimeSignatureNumeratorValue.markInterested();
+        mTimeSignatureDenominatorValue.markInterested();
     }
 
     private void prepareTrack(final Track track) {
@@ -172,12 +176,16 @@ public class TrackControlLayer extends Layer {
         }
     }
 
-    private void handleFixedLength(final boolean pressed, final int index) {
+    private void handleFixedLength(final boolean pressed, final int numBars) {
         int numerator = mTimeSignatureNumeratorValue.get();
         if (numerator <= 0) {
             numerator = 4;
         }
-        postRecordingTimeOffset.set(index * numerator);
+        int denominator = mTimeSignatureDenominatorValue.get();
+
+        double beatTimeValue = numBars * numerator * 4.0 / denominator;
+
+        postRecordingTimeOffset.set(beatTimeValue);
     }
 
     private void handleTrackArm(final boolean pressed, final int index, final Track track) {
