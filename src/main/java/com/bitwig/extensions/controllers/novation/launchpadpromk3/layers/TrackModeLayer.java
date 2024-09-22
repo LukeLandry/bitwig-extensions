@@ -91,7 +91,7 @@ public class TrackModeLayer extends Layer {
 
         fixedLengthButton.bindDelayedAction(this, this::enterFixedSetMode, this::releasedFixedLength, 300);
         fixedLengthButton.bindLight(
-            this, pressed -> postRecordingAction.get().equals("play-recorded") ? (pressed
+            this, pressed -> postRecordingAction.get().equals("play_recorded") ? (pressed
                 ? RgbState.ORANGE_PULSE
                 : RgbState.ORANGE) : RgbState.DIM_WHITE);
         fixedLengthButton.disable(shiftLayer);
@@ -152,7 +152,7 @@ public class TrackModeLayer extends Layer {
     private void enterFixedSetMode() {
         returnToMode = buttonsMode.get();
         setButtonMode(TrackModeButtonMode.FIXED_LENGTH);
-        postRecordingAction.set("play-recorded");
+        postRecordingAction.set("play_recorded");
     }
 
     private void releasedFixedLength() {
@@ -160,10 +160,10 @@ public class TrackModeLayer extends Layer {
             setButtonMode(returnToMode);
             returnToMode = null;
         } else {
-            if (postRecordingAction.get().equals("play-recorded")) {
+            if (postRecordingAction.get().equals("play_recorded")) {
                 postRecordingAction.set("off");
             } else {
-                postRecordingAction.set("play-recorded");
+                postRecordingAction.set("play_recorded");
             }
         }
     }
